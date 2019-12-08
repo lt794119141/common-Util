@@ -92,7 +92,7 @@ public class FileUtil {
 			br = new BufferedReader(new FileReader(new File(pathname)));
 			do {
 				strList.add(br.readLine());
-			}while(br.read()!=-1);
+			}while(br.readLine()!=null);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return null;
