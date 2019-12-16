@@ -16,6 +16,7 @@ import java.util.List;
  * @date:   2019年12月5日 下午1:27:47
  */
 public class FileUtil {
+
 	/**
 	 * 根据文件，截取扩展名
 	 * @param fileName "aa.png"

@@ -62,6 +62,24 @@ public class StringUtil {
 		return str.matches(regex);
 	}
 	/**
+	 * 
+	* @Title: isNumber 
+	* @Description: 判断是否为数字
+	* @param @param str
+	* @param @return    设定文件 
+	* @return boolean    返回类型 
+	* @throws
+	 */
+	public static boolean isNumber(String str) {
+		if(isNotBlank(str)) {
+			String regex="[0-9]+";
+			return str.matches(regex);
+		}
+		return false;
+	}
+	
+	
+	/**
 	 * @Title: isLetter   
 	 * @Description: TODO(描述这个方法的作用)   
 	 * @param: @return      
