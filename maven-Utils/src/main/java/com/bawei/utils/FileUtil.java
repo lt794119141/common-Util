@@ -1,6 +1,5 @@
 package com.bawei.utils;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +15,6 @@ import java.util.List;
  * @date:   2019年12月5日 下午1:27:47
  */
 public class FileUtil {
-
 	/**
 	 * 根据文件，截取扩展名
 	 * @param fileName "aa.png"
@@ -89,13 +87,11 @@ public class FileUtil {
 	public static List<String> readTextFileOfList(String pathname) {
 		BufferedReader br = null;
 		List<String> strList = new ArrayList<>();
-		String str="";
 		try {
 			br = new BufferedReader(new FileReader(new File(pathname)));
-			while((str=br.readLine())!=null) {
-				strList.add(str);
-			}
-			
+			do {
+				strList.add(br.readLine());
+			}while(br.read()!=-1);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return null;

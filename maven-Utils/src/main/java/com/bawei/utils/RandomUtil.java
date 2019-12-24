@@ -1,6 +1,5 @@
 package com.bawei.utils;
 
-
 import java.util.Random;
 
 /**
