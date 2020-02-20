@@ -62,7 +62,7 @@ public class FileUtil {
 		String str=null;
 		try {
 			br = new BufferedReader(new FileReader(new File(pathname)));
-			while((str=br.readLine())!= null) {
+			while((str=br.readLine())!=null) {
 				sb.append(str);
 				sb.append("\r\n");
 			}
@@ -91,6 +91,9 @@ public class FileUtil {
 		String str=null;
 		try {
 			br = new BufferedReader(new FileReader(new File(pathname)));
+			/*do {
+				strList.add(br.readLine());
+			}while(br.read()!=-1);*/
 			while((str=br.readLine())!=null) {
 				strList.add(str);
 			}
@@ -155,7 +158,7 @@ public class FileUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getSystemTempDirectory());
+		
 	}
 	
 }

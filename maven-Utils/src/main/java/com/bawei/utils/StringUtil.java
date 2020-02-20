@@ -48,6 +48,10 @@ public class StringUtil {
 		String regex = "1[3578]\\d{9}";
 		return str.matches(regex);
 	}
+	public static boolean isNum(String str) {
+		String regex = "[0-9]{1,}\\.?[0-9]*";
+		return str.matches(regex);
+	}
 	/**
 	 * @Title: isEmail   
 	 * @Description: 验证是否为邮箱   
@@ -255,9 +259,21 @@ public class StringUtil {
         return  str.matches(regex);	
 	}
 	
+	public static boolean isHttpUrl1(String url) {
+		if(url.startsWith("http")) {
+			return true;
+		}
+		return false;
+		
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		boolean httpUrl = isHttpUrl("https://127.0.0.1/a.html");
 		System.out.println(httpUrl);
 	}
+	
+	
 	
 }
