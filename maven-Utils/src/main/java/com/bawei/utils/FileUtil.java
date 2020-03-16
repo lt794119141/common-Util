@@ -5,8 +5,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 文件工具类
@@ -155,6 +160,39 @@ public class FileUtil {
 	
 	public static String getFileSize(String fileFullName) {
 		return getFileSize(new File(fileFullName));
+	}
+	
+	/**
+	 *  上传文件
+	 * @param file
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	public String processFile(MultipartFile file) throws IllegalStateException, IOException {
+
+		// 原来的文件名称
+		System.out.println("file.isEmpty() :" + file.isEmpty()  );
+		System.out.println("file.name :" + file.getOriginalFilename());
+		
+		if(file.isEmpty()||"".equals(file.getOriginalFilename()) || file.getOriginalFilename().lastIndexOf('.')<0 ) {
+			return "";
+		}
+			
+		String originName = file.getOriginalFilename();
+		String suffixName = originName.substring(originName.lastIndexOf('.'));
+		SimpleDateFormat sdf=  new SimpleDateFormat("yyyyMMdd");
+		String path = "d:/pic/" + sdf.format(new Date());
+		File pathFile = new File(path);
+		if(!pathFile.exists()) {
+			pathFile.mkdir();
+		}
+		String destFileName = 		path + "/" +  UUID.randomUUID().toString() + suffixName;
+		File distFile = new File( destFileName);
+		file.transferTo(distFile);//文件另存到这个目录下边
+		return destFileName.substring(7);
+		
+		
 	}
 	
 	public static void main(String[] args) {
